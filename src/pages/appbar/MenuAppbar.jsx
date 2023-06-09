@@ -17,12 +17,11 @@ import logo from '../../static/Kaldi.png';
 const pages = ['Products', 'Pricing'];
 const settings = ['Profile', 'Account', 'Logout'];
 
-export function MenuAppBar() {
+export function MenuAppBar({setPageSelected}) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   
   const img = {
-
     borderRadius: "4px",
     padding: "5px",
     width: "4rem"
@@ -35,8 +34,9 @@ export function MenuAppBar() {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
-    console.log('hola');
+  const handleCloseNavMenu = (page) => {
+    console.log('this is:', page.target.innerText);
+    setPageSelected(page.target.innerText);
     setAnchorElNav(null);
   };
 
@@ -97,7 +97,7 @@ export function MenuAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <MenuItem key={page} onClick={() => handleCloseNavMenu(page)}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
