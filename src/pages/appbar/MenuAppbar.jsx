@@ -17,7 +17,7 @@ import logo from '../../static/Kaldi.png';
 const pages = ['Products', 'Pricing'];
 const settings = ['Profile', 'Account', 'Logout'];
 
-export function MenuAppBar({setPageSelected}) {
+export function MenuAppBar({setPageSelected, setMenuItem}) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   
@@ -34,16 +34,9 @@ export function MenuAppBar({setPageSelected}) {
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = (page) => {
-    console.log('this is:', page.target.innerText);
-    setPageSelected(page.target.innerText);
-    setAnchorElNav(null);
-  };
-
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
-
   return (
     <AppBar position="static">
       <Container maxWidth="xl">
@@ -91,13 +84,12 @@ export function MenuAppBar({setPageSelected}) {
                 horizontal: 'left',
               }}
               open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: 'block', md: 'none' },
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page} onClick={() => handleCloseNavMenu(page)}>
+                <MenuItem key={page} onClick={() => setPageSelected(page)}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
               ))}
@@ -126,7 +118,7 @@ export function MenuAppBar({setPageSelected}) {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={setPageSelected}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
                 {page}
@@ -157,7 +149,7 @@ export function MenuAppBar({setPageSelected}) {
               onClose={handleCloseUserMenu}
             >
               {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
+                <MenuItem key={setting} onClick={() => setMenuItem(setting)}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
               ))}
