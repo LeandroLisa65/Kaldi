@@ -1,3 +1,5 @@
+import { Default } from "./Default";
+
 export const RenderSwitch = ({page}) => {
         switch(page) {
             case 'PRODUCTS':
@@ -16,13 +18,9 @@ export const RenderSwitch = ({page}) => {
                     return (
                         <span>Account</span>
                     )
-            case 'Logout':
-                      return (
-                          <span>Logout</span>
-                      )
             default:
               return (
-                <span>Nada</span>
+                <Default />
               )
           }
 }

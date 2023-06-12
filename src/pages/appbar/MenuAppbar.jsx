@@ -13,9 +13,10 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import logo from '../../static/Kaldi.png';
+import { pages, settings } from '../../constants';
 
-const pages = ['Products', 'Pricing'];
-const settings = ['Profile', 'Account', 'Logout'];
+const showPages = pages;
+const showSettings = settings;
 
 export function MenuAppBar({setPageSelected, setMenuItem}) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
@@ -37,8 +38,17 @@ export function MenuAppBar({setPageSelected, setMenuItem}) {
   const handleCloseUserMenu = () => {
     setAnchorElUser(null);
   };
+
+  const navBarStyle = {
+    backgroundColor: 'aliceblue'
+  }
+
+  const menuColor = {
+    color: '#3c271c'
+  }
+
   return (
-    <AppBar position="static">
+    <AppBar position="static" style={navBarStyle}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <img src={logo} alt="logo" style={img}/>
@@ -46,14 +56,14 @@ export function MenuAppBar({setPageSelected, setMenuItem}) {
             variant="h6"
             noWrap
             component="a"
-            href="/"
+            onClick={setPageSelected}
             sx={{
               mr: 2,
               display: { xs: 'none', md: 'flex' },
               fontFamily: 'monospace',
               fontWeight: 700,
               letterSpacing: '.3rem',
-              color: 'inherit',
+              color: '#3c271c',
               textDecoration: 'none',
             }}
           >
@@ -88,7 +98,7 @@ export function MenuAppBar({setPageSelected, setMenuItem}) {
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
+              {showPages.map((page) => (
                 <MenuItem key={page} onClick={() => setPageSelected(page)}>
                   <Typography textAlign="center">{page}</Typography>
                 </MenuItem>
@@ -115,9 +125,10 @@ export function MenuAppBar({setPageSelected, setMenuItem}) {
             Kaldi
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
+            {showPages.map((page) => (
               <Button
                 key={page}
+                style={menuColor}
                 onClick={setPageSelected}
                 sx={{ my: 2, color: 'white', display: 'block' }}
               >
@@ -129,7 +140,7 @@ export function MenuAppBar({setPageSelected, setMenuItem}) {
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
-                <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg" />
+                <Avatar alt="Remy Sharp" />
               </IconButton>
             </Tooltip>
             <Menu
@@ -148,7 +159,7 @@ export function MenuAppBar({setPageSelected, setMenuItem}) {
               open={Boolean(anchorElUser)}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
+              {showSettings.map((setting) => (
                 <MenuItem key={setting} onClick={() => setMenuItem(setting)}>
                   <Typography textAlign="center">{setting}</Typography>
                 </MenuItem>
