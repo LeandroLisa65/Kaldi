@@ -12,8 +12,8 @@ import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
-import logo from '../../static/Kaldi.png';
-import { pages, settings } from '../../constants';
+import logo from '../static/Kaldi.png';
+import { pages, settings } from '../constants';
 
 const showPages = pages;
 const showSettings = settings;

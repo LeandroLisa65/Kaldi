@@ -1,4 +1,4 @@
-import logo from '../../static/Kaldi.png';
+import logo from '../static/Kaldi.png';
 
 const center = {
     display: "block",
