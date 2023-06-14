@@ -18,7 +18,7 @@ import { pages, settings } from '../constants';
 const showPages = pages;
 const showSettings = settings;
 
-export function MenuAppBar({setPageSelected, setMenuItem}) {
+export function NavBar({setPageSelected, setMenuItem}) {
   const [anchorElNav, setAnchorElNav] = React.useState(null);
   const [anchorElUser, setAnchorElUser] = React.useState(null);
   

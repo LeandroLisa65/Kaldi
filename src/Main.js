@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { MenuAppBar } from './components/MenuAppbar';
+import { NavBar } from './components/NavBar';
 import { LogIn } from './components/LogIn';
 import './Main.css';
 import { RenderSwitch } from './components/RenderSwitch';
@@ -35,7 +35,7 @@ function App() {
   }
   else {
     main = <div>
-      <MenuAppBar setPageSelected={selectPage} setMenuItem={selectMenuItem} />
+      <NavBar setPageSelected={selectPage} setMenuItem={selectMenuItem} />
       <RenderSwitch page={pageSelected}/>
     </div>;
   }
