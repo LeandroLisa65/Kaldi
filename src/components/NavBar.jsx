@@ -14,6 +14,7 @@ import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
 import logo from '../static/Kaldi.png';
 import { pages, settings } from '../constants';
+import { CartWidget } from './CartWidget';
 
 const showPages = pages;
 const showSettings = settings;
@@ -136,7 +137,7 @@ export function NavBar({setPageSelected, setMenuItem}) {
               </Button>
             ))}
           </Box>
-
+          <CartWidget />
           <Box sx={{ flexGrow: 0 }}>
             <Tooltip title="Open settings">
               <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
