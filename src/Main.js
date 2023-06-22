@@ -2,9 +2,9 @@ import * as React from 'react';
 import { NavBar } from './components/NavBar';
 import { LogIn } from './components/LogIn';
 import './Main.css';
-import { RenderSwitch } from './components/RenderSwitch';
+import RenderSwitch from './components/RenderSwitch';
 
-function App() {
+const Main = () => {
   const [logged, setLogged] = React.useState(false);
   const [pageSelected, setPageSelected] = React.useState('');
 
@@ -45,4 +45,4 @@ function App() {
   );
 }
 
-export default App;
+export default Main;
