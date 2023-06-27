@@ -3,6 +3,7 @@ import { NavBar } from './components/NavBar';
 import { LogIn } from './components/LogIn';
 import './Main.css';
 import RenderSwitch from './components/RenderSwitch';
+import ContadorPage from './pages/Contador';
 
 const Main = () => {
   const [logged, setLogged] = React.useState(false);
@@ -37,6 +38,7 @@ const Main = () => {
     main = <div>
       <NavBar setPageSelected={selectPage} setMenuItem={selectMenuItem} />
       <RenderSwitch page={pageSelected}/>
+      <ContadorPage />
     </div>;
   }
 
