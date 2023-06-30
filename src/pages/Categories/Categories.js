@@ -15,7 +15,6 @@ const Categories = () => {
     useEffect(() => {
       getItems()
       .then((items) => {
-        console.log(items);
         let categoryItems = items.filter(x => x.categoryId === parseInt(id))
         if (categoryItems.length === 0) {
           console.log("No results!");
@@ -31,7 +30,6 @@ const Categories = () => {
       });
       getCategories()
       .then((categories) => {
-        console.log(categories);
         let category = categories.find(x => x.id === parseInt(id))
         if (category.length === 0) {
           console.log("No results!");

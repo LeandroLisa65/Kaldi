@@ -7,7 +7,7 @@ const items = [
     , model: 'model 1'
     , quanyity: 1
     , gender: 'gender'
-    , image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_Homepage.svg/320px-Google_Homepage.svg.png'
+    , image: 'https://cdn-icons-png.flaticon.com/512/1710/1710414.png'
     , categoryId: 1
     },
     { id: 2
@@ -19,7 +19,7 @@ const items = [
     , model: 'model 2'
     , quanyity: 2
     , gender: 'gender'
-    , image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_Homepage.svg/320px-Google_Homepage.svg.png'
+    , image: 'https://cdn-icons-png.flaticon.com/512/1710/1710414.png'
     , categoryId: 2
     },
     { id: 3
@@ -31,7 +31,7 @@ const items = [
     , model: 'model 3'
     , quanyity: 3
     , gender: 'gender'
-    , image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_Homepage.svg/320px-Google_Homepage.svg.png'
+    , image: 'https://cdn-icons-png.flaticon.com/512/1710/1710414.png'
     , categoryId: 3
     }
 ]
@@ -54,20 +54,6 @@ const categories = [
     }
 ]
 
-const details = [
-    { 
-    id: 1
-    , text: 'Detail 1'
-    },
-    { 
-    id: 2, text: 'Detail 2'
-    },
-    { 
-    id: 3
-    , text: 'Detail 3'
-    }
-]
-
 export const getItems = () => {
     return new Promise((resolve, reject) => {
         setTimeout(() =>{
@@ -84,10 +70,3 @@ export const getCategories = () => {
     })
 }
 
-export const getDetails = () => {
-    return new Promise((resolve, reject) => {
-        setTimeout(() =>{
-            resolve(details)
-        }, 1000)
-    })
-}

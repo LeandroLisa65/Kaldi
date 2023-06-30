@@ -7,7 +7,7 @@ const ItemDetailContainer = ({ product, onAdd }) => {
   const [loading, setLoading] = useState(true);
 
   const getProduct = () => {
-    return new Promise((res, rej) => {
+    return new Promise((res) => {
       setTimeout(() => {
         console.log(product);
         res(product);
@@ -16,18 +16,13 @@ const ItemDetailContainer = ({ product, onAdd }) => {
   };
 
   useEffect(() => {
-    let isSubscribed = true;
     getProduct()
       .then((data) => {
-        if (isSubscribed) {
           setArticle(data);
           setLoading(false);
-        }
       })
       .catch(() => console.log("rejected"));
-
-    return () => (isSubscribed = false);
-    //  eslint-disable-next-line react-hooks/exhaustive-deps
+// eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return loading ? (

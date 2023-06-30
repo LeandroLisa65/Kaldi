@@ -15,8 +15,6 @@ const ItemDetailPage = ({ onAdd }) => {
   const { id } = useParams();
 
   useEffect(() => {
-    let isSubscribed = true;
-
       getItems()
       .then((doc) => {
         const item = doc.find(x => x.id === parseInt(id));
@@ -24,10 +22,8 @@ const ItemDetailPage = ({ onAdd }) => {
           console.log("Item does not exist!");
           return;
         }
-        if (isSubscribed) {
           console.log("Item found!");
           setProduct(item);
-        }
       })
       .catch((error) => {
         console.log("Error searching items", error);
@@ -35,8 +31,6 @@ const ItemDetailPage = ({ onAdd }) => {
       .finally(() => {
         setLoading(false);
       });
-
-    return () => (isSubscribed = false);
   }, [id]);
 
   useEffect(() => {

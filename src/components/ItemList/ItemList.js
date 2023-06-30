@@ -15,16 +15,10 @@ const ItemList = ({ onAdd }) => {
     setLoading(true);
       getItems()
       .then((items) => {
-        console.log(items);
         if (items.length === 0) {
           console.log("No results!");
         }
-        setProducts(
-          items.map((item) => {
-            console.log(item);
-            return item;
-          })
-        );
+        setProducts(items);
       })
       .catch((error) => {
         console.log("Error searching items", error);
