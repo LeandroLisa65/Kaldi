@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ItemDetail from "../../components/ItemDetail/ItemDetail";
 import Loading from "../../components/Loading/Loading";
 import { getCategories, getItems } from "../../asyncMock";
@@ -11,6 +11,7 @@ const Categories = () => {
   const [category, setCategory] = useState({});
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
+  const navigate = useNavigate();
 
     useEffect(() => {
       getItems()
@@ -18,6 +19,7 @@ const Categories = () => {
         let categoryItems = items.filter(x => x.categoryId === parseInt(id))
         if (categoryItems.length === 0) {
           console.log("No results!");
+          navigate("/");
           return;
         }
         setProducts(categoryItems);
@@ -43,7 +45,7 @@ const Categories = () => {
       .finally(() => {
         setLoading(false);
       });
-  }, [id]);
+  }, [id, navigate]);
 
   return (
     <div className="categories">

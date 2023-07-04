@@ -2,7 +2,8 @@ const items = [
     { id: 1
     , name: 'name 1'
     , description: 'Item 1'
-    , stock: 1, price: 1
+    , stock: 20
+    , price: 1
     , brand: 'brand 1'
     , model: 'model 1'
     , quanyity: 1
@@ -13,7 +14,7 @@ const items = [
     { id: 2
     , name: 'name 2'
     , description: 'Item 2'
-    , stock: 2
+    , stock: 20
     , price: 2
     , brand: 'brand 2'
     , model: 'model 2'
@@ -25,7 +26,7 @@ const items = [
     { id: 3
     , name: 'name 3'
     , description: 'Item 3'
-    , stock: 3
+    , stock: 20
     , price: 3
     , brand: 'brand 3'
     , model: 'model 3'

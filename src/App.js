@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { BrowserRouter , Routes, Route } from "react-router-dom";
+import { BrowserRouter , Routes, Route, Navigate } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.min.js";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -27,6 +27,7 @@ function App() {
               <Route path="/item/:id" element={<ItemDetailPage/>}/>
               <Route path="/categories/:id" element={<Categories />}/>
               <Route path="/cart" element={<Cart/>}/>
+              <Route path="/*" element={<Navigate to="/" replace={true}/>}/>
             </Routes>
           </CssBaseline>
         </BrowserRouter>

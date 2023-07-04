@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import ItemCount from "../../components/ItemCount/ItemCount";
 import Loading from "../../components/Loading/Loading";
 import CartContext from "../../contexts/cartContext";
@@ -13,13 +13,14 @@ const ItemDetailPage = ({ onAdd }) => {
   const [product, setProduct] = useState();
   const [loading, setLoading] = useState(true);
   const { id } = useParams();
-
+  const navigate = useNavigate();
   useEffect(() => {
       getItems()
       .then((doc) => {
         const item = doc.find(x => x.id === parseInt(id));
         if (!item) {
           console.log("Item does not exist!");
+          navigate("/");
           return;
         }
           console.log("Item found!");
@@ -31,7 +32,7 @@ const ItemDetailPage = ({ onAdd }) => {
       .finally(() => {
         setLoading(false);
       });
-  }, [id]);
+  }, [id, navigate]);
 
   useEffect(() => {
     setArticle(product);
