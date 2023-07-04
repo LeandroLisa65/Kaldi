@@ -52,7 +52,7 @@ const ItemList = ({ onAdd }) => {
             <h2>Categorías</h2>
             {categories.map((category) => {
               let id = category.id;
-              return <Link to={'/categories/'+id}>{category.description}</Link>;
+              return <Link key={id} to={'/categories/'+id}>{category.description}</Link>;
             })}
           </div>
           <div className="list-container__details-title">
