@@ -9,6 +9,7 @@ import Home from "./pages/Home/Home";
 import Cart from "./pages/Cart/Cart";
 import ItemDetailPage from "./pages/ItemDetailPage/ItemDetailPage";
 import Categories from "./pages/Categories/Categories";
+import Form from "./pages/Form/Form";
 
 import CartContext from "./contexts/cartContext";
 
@@ -25,6 +26,7 @@ function App() {
             <Routes>
               <Route exact path="/" element={<Home />}/>
               <Route path="/item/:id" element={<ItemDetailPage/>}/>
+              <Route path="/form" element={<Form/>}/>
               <Route path="/categories/:id" element={<Categories />}/>
               <Route path="/cart" element={<Cart/>}/>
               <Route path="/*" element={<Navigate to="/" replace={true}/>}/>

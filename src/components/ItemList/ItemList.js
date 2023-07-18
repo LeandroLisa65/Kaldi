@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ItemDetailContainer from "../ItemDetailContainer/ItemDetailContainer";
 import Loading from "../Loading/Loading";
 import { Link } from "react-router-dom";
-import { getCategories, getItems } from "../../asyncMock";
+import { getFirestore, collection, getDocs } from 'firebase/firestore';
 
 import "./ItemList.scss";
 
@@ -13,32 +13,32 @@ const ItemList = ({ onAdd }) => {
   const [categories, setCategories] = useState([]);
   useEffect(() => {
     setLoading(true);
-      getItems()
-      .then((items) => {
-        if (items.length === 0) {
-          console.log("No results!");
-        }
-        setProducts(items);
-      })
-      .catch((error) => {
-        console.log("Error searching items", error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-      getCategories()
-      .then((items) => {
-        if (items.length === 0) {
-          console.log("No results!");
-        }
-        setCategories(items);
-      })
-      .catch((error) => {
-        console.log("Error searching items", error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+
+    const db = getFirestore();
+    const getItems = collection(db, 'items');
+
+    getDocs(getItems)
+    .then((snapshot) => {
+        setProducts(snapshot.docs.map(el => ({id: el.id, ...el.data()})))
+    })
+    .catch((error) => {
+      console.log("Error searching items", error);
+    })
+    .finally(() => {
+      setLoading(false);
+    })
+
+    const getCategories = collection(db,'categories');
+    getDocs(getCategories)
+    .then((snapshot) => {
+      setCategories(snapshot.docs.map(el => ({id: el.id, ...el.data()})))
+    })
+    .catch((error) => {
+      console.log("Error searching items", error);
+    })
+    .finally(() => {
+      setLoading(false);
+    });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

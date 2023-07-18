@@ -9,7 +9,6 @@ const ItemDetailContainer = ({ product, onAdd }) => {
   const getProduct = () => {
     return new Promise((res) => {
       setTimeout(() => {
-        console.log(product);
         res(product);
       }, 1000);
     });

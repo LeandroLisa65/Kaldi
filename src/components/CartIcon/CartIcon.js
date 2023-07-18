@@ -14,7 +14,7 @@ const CartIcon = () => {
   }, [cart, setQnt]);
 
   return (
-    <Badge badgeContent={qnt} color="secondary">
+    <Badge badgeContent={qnt} color="secondary" overlap="rectangular">
       <ShoppingCartIcon fontSize="large" />
     </Badge>
   );

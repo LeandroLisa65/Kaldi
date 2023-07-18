@@ -3,7 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import ItemCount from "../../components/ItemCount/ItemCount";
 import Loading from "../../components/Loading/Loading";
 import CartContext from "../../contexts/cartContext";
-import { getItems } from "../../asyncMock";
+import { getFirestore, doc, getDoc } from 'firebase/firestore';
 
 import "./ItemDetailPage.scss";
 
@@ -15,23 +15,19 @@ const ItemDetailPage = ({ onAdd }) => {
   const { id } = useParams();
   const navigate = useNavigate();
   useEffect(() => {
-      getItems()
-      .then((doc) => {
-        const item = doc.find(x => x.id === parseInt(id));
-        if (!item) {
-          console.log("Item does not exist!");
-          navigate("/");
-          return;
-        }
-          console.log("Item found!");
-          setProduct(item);
-      })
-      .catch((error) => {
-        console.log("Error searching items", error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
+    const db = getFirestore();
+    const item = doc(db, 'items', id);
+
+    getDoc(item)
+    .then((snapshot) => {
+      setProduct({id: snapshot.id, ...snapshot.data()})
+    })
+    .catch((error) => {
+      console.log("Error searching items", error);
+    })
+    .finally(() => {
+      setLoading(false);
+    })
   }, [id, navigate]);
 
   useEffect(() => {
