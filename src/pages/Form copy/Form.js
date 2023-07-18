@@ -141,7 +141,6 @@ const Form = () => {
             <h2 className="mt-5">¡Gracias por elegirnos!</h2>
             <h4 className="my-5">La compra se ha realizado exitosamente.</h4>
             <strong>El ID de tu compra es {orderId}</strong>
-            <p className="danger">Sport Store</p>
             <Link className="btn btn-outline-primary m-3" to={`/`}>
               <strong>Ir a comprar</strong>
             </Link>
