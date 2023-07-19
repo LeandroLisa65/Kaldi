@@ -93,7 +93,7 @@ const ItemDetailPage = ({ onAdd }) => {
                       onAdd={onAdd}
                       setQuantity={setQuantity}
                     />
-                    <div className="counter btn-buy" style={{ width: "15rem" }}>
+                    <div className="counter btn-buy" style={{ width: "15rem", backgroundColor: "#7f4f83", borderRadius:"40px" }}>
                       <div className="counter__buttonAdd">
                         <button onClick={handleClick}>
                           Agregar al carrito {quantity}

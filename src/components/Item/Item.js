@@ -9,7 +9,7 @@ const Item = ({ product }) => {
     <div className="link">
       <Link to={`/item/${product.id}`}>
         <div className="counter link__item" style={{ width: "15rem" }}>
-          <div className="counter__content">
+          <div className="counter__content text-center">
             <h5 className="card-title">{name}</h5>
             <img
               src={image}
